@@ -8,7 +8,7 @@ const generateProTips = [
 
 // initializing the code mirror
 var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
-    mode: "lua",
+    mode: "ts",
     theme: "dracula",
     lineNumbers: true,
     autoCloseTags: true
@@ -61,7 +61,7 @@ $(document).ready(function () {
 
        var a = window.document.createElement('a');
        a.href = window.URL.createObjectURL(new Blob([codemirrorEditor.getValue()], { type: 'text/plain' }));
-       a.download = 'script.lua';
+       a.download = 'script.ts';
 
        document.body.appendChild(a);
        a.click();
