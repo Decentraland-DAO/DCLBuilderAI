@@ -242,22 +242,22 @@ $(document).ready(function () {
 
   // sweet alert (success)
   $('#sweetsuccess').on('click', function () {
-    swal({
-      title: 'Good job!',
-      text: 'Here is success message',
-      icon: 'success',
-      button: 'OK!',
-    })
+    Swal.fire({
+        title: "Success",
+        text: "We have recorded your feedback. Thank you!",
+        icon: "success",
+        button: "OK",
+    });
   })
 
   // sweet alert (success)
   $('#sweetdanger').on('click', function () {
-    swal({
-      title: 'Danger Message',
-      text: 'You clicked the button!',
-      icon: 'warning',
-      button: 'OK!',
-    })
+    Swal.fire({
+        title: "Incorrect Code Generated",
+        text: "We have recorded your feedback. Thank you!",
+        icon: "warning",
+        button: "OK",
+    });
   })
 
 })

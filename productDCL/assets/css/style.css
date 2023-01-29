@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #c5c6c7;
@@ -361,7 +361,7 @@ body {
 
 }
 .nie-left {
-  margin-right: 200px;
+  margin-right: 10px;
   margin-bottom: 0;
   display: flex;
 }
