@@ -248,6 +248,17 @@ $(document).ready(function () {
         icon: "success",
         button: "OK",
     });
+
+    let editorval = editor.getValue().trim();
+    let promptval = $('#elemprompt').val().trim();
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/addToTrainingSet', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        // record response
+    };
+    xhr.send('prompt1='+promptval+'&editor1='+editorval);
   })
 
   // sweet alert (success)

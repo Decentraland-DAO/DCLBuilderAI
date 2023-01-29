@@ -39,3 +39,22 @@ exports.generateResponse = catchAsync(async (req, res, next) => {
       res.json("/* Something went wrong! Please try again or request support if the issue persists.");
   }
 });
+
+exports.UpdateTrainingData = catchAsync(async (req, res, next) => {
+
+  try {
+
+    const prompt = req.body.prompt1;
+    const completion = req.body.editor1;
+
+    const model = await Model.findOne({ prompt : prompt, completion: completion});
+    if(!model) {
+      // await Model.create({ prompt : prompt, completion: completion});
+    }
+
+    res.json();
+
+  } catch (err) {
+    res.json();
+  }
+});
