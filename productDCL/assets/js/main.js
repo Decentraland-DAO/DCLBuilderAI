@@ -271,4 +271,29 @@ $(document).ready(function () {
     });
   })
 
+  $('#generateCode').on('click', function () {
+
+      let textval = $('#elemprompt').val().trim();
+      if(textval.length < 4) {
+              Swal.fire({
+                  title: "Prompt is too short",
+                  text: "Your prompt is too short for DCLBuilderAI to work.",
+                  icon: "warning",
+                  button: "OK",
+              });
+          return;
+      }
+
+     editorArray[0].setValue("Generating SDK7 Code using DCLBuilderAI...");
+
+     var xhr = new XMLHttpRequest();
+     xhr.open('POST', '/generate', true);
+     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+     xhr.onload = function () {
+       var data = JSON.parse(this.responseText).trimStart() + "\n";
+       editorArray[0].setValue(data);
+     };
+     xhr.send('prompt1='+textval);
+  })
+
 })
