@@ -8,6 +8,7 @@
 
 DCLBuilderAI is an AI-powered build tool for creating SDK7 compatible custom scripts for Decentraland and using them for generating scenes for lands. The idea is that we'll use SDK7 data for training and creating an open-sourced fine-tuned model to support scene/code generation. Our versions of the datasets will be accessible on Kaggle as well: https://www.kaggle.com/datasets/dclbuilderai/decentraland-sdk7-training-data - this will be updated as we make more and more progress.
 
-We've made code-generation videos available at: https://www.youtube.com/@dclbuilderai-my2td
+We've made code-generation videos available at: https://www.youtube.com/@dclbuilderai-my2td 
+
 Our private beta would soon launch, join the waitlist here: https://dclbuilderai.com/
 
