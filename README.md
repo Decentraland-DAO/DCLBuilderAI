@@ -12,3 +12,7 @@ We've made code-generation videos available at: https://www.youtube.com/@dclbuil
 
 Our private beta would soon launch, join the waitlist here: https://dclbuilderai.com/
 
+## Datasets 
+
+- All the different versions of our training data sets will be accessible at: https://www.kaggle.com/datasets/dclbuilderai/decentraland-sdk7-training-data. While some of the data may require formatting, we will make it readable and will stick to the original 9-month 50k goal.
+- Our goal is to create the largest fine-tuned model trained on Decentraland, while we will try to make it so such that is produces SDK7 Compatable code, we cannot guarantee that the output will be strictly for ECS7. However, that doesn't mean that the code will not work for the SDK. 
