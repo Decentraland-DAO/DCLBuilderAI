@@ -2,7 +2,7 @@
 
 <i> This project is currently WIP, so please bear with us as we work toward completing it, here's the first look:</i>
 
-<img width="1435" alt="Screen Shot 2023-04-28 at 5 14 13 PM" src="https://user-images.githubusercontent.com/56746236/235272286-0e9f0d19-7bba-475e-a462-66b47f5cfe59.png">
+<img width="1436" alt="Screen Shot 2023-04-29 at 2 06 07 AM" src="https://user-images.githubusercontent.com/56746236/235294601-a808db7a-40ab-4b41-b4ce-2fb41e2a0a25.png">
 
 ## Introduction
 
