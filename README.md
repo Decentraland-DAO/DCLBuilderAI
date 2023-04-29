@@ -23,6 +23,7 @@ We're using three different models for training the AI, in order to best assess 
 - Generate (A): is using a davinci trained model for predicting results. 
 - Generate (B): is using a curie trained model for code generation.
 - Generate (C): is using an ada trained model for the code generation.
+- Generate Model: is generating a 3D .gltf model that can be used in Decentraland builds. 
 
 To read more on the relevance of these models, refer to OpenAI's fine-tuning guide, https://platform.openai.com/docs/guides/fine-tuning
 
