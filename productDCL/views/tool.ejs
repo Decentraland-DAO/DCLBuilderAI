@@ -173,7 +173,7 @@
                 <button class="btn-02 btn-2" id="generateCodeC">
                   Generate (C)
                 </button>
-                <button class="btn-02 btn-2" id="generateCodeD">
+                <button class="btn-02 btn-2" id="generateModel">
                   Generate Model
                 </button>
               </div>
@@ -183,6 +183,7 @@
         </div>
       </div>
     </div>
+    <!-- <a class="open-it" style="margin-left: 80%;" id="open" href="/" download>Download File (.glb)</a> -->
 
     <div class="container-fluid page">
 
@@ -231,6 +232,7 @@
             <button class="btn btn-cross" id="sweetdanger">
               <span class="mdi mdi-close-box chek-not"></span>
             </button>
+
           </div>
 
           <div class="text-eid">
@@ -307,78 +309,78 @@ var global_var = 10
 
     <div class="sec-09-pro">
 
-        <div class="code-area">
-            <div class="studio-btn align-items-center">
-                <div class="idit-not">
-
-                    <button class="btn btn-check" id="sweetsuccess">
-                        <span class="mdi mdi-check tick"></span>
-                    </button>
-                    <button class="btn btn-cross" id="sweetdanger">
-                        <span class="mdi mdi-close-box chek-not"></span>
-                    </button>
-                </div>
-
-               <div class="">
-
-               </div>
-                <div class="btn-code flex align-items-center">
-                    <a class="open-it" id="open" href="/" download>Download File (.glb)</a>
-
-                </div>
-            </div>
-            <style>
-            model-viewer {
-              width: 700px;
-              height: 600px;
-              justify-content: center;
-              align-items: center;
-            }
-            #default-progress-bar .bar {
-                background-color: #fff !important;
-            }
-            a:hover {
-              text-decoration: none;
-              color: #fff;
-            }
-            .default-progress-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            }
-            #default-progress-bar > .bar {
-            top: initial !important;
-            left: initial !important;
-            }
-
-            .eadi-miror{position: relative; height: 600px;align-items: center;border-radius: 5px;}
-            .loaderanim1 {position: absolute; top: 0; left: 0; width: 700px; height: 600px; display: flex; justify-content: center; align-items: center;}
-            .loaderanim {position: absolute; top: 0; visibility: hidden; left: 0; width: 700px; height: 600px; display: flex; justify-content: center; align-items: center;}
-            .loaderanim img {width: 100px; }
-            </style>
-            <div class="inner-ui-2">
-
-
-              <!-- Import the component -->
-              <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-              <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-              <!-- Use it like any other HTML element -->
-              <model-viewer id="mv-demo" shadow-intensity="1" src="file22.glb"
-              shadow-intensity="1" camera-controls touch-action="pan-y" generate-schema></model-viewer>
-              <div class="loaderanim1" id="loadi">Your model will be generated here</div>
-              <div class="loaderanim" id="load"><img src="img/dark-loader.gif"></div>
-
-        </div>
-    </div>
+      <div class="inner-ui-2">
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+             <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+             <model-viewer id="mv-demo" shadow-intensity="1" src="file22.glb"
+             shadow-intensity="1" camera-controls touch-action="pan-y" generate-schema></model-viewer>
+             <div id="load" style="color: black; visibility: hidden; margin-top: -54%; display: flex;align-items: center;justify-content: center;"><img src="img/dark-loader.gif"> </div>
+        <div id="loadi" style="color: black; margin-top: -40%; display: flex;align-items: center;justify-content: center;">Model will be generated here </div>
       </div>
+
 
 
     </div>
   </div>
+
   </div>
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+  $('#generateModel').on('click', function () {
+         // getting the value
+
+         let textval = $('#elemprompt').val().trim();
+         if(textval.length < 4) {
+               Swal.fire({
+                   title: "Prompt is too short",
+                   text: "Your prompt is too short for DCLBuilderAI to work.",
+                   icon: "warning",
+                   button: "OK",
+               });
+           return;
+         }
+         let id = "<%=user.id%>";
+         document.getElementById("mv-demo").src = "file22.glb";
+         document.getElementById("load").style.visibility = "visible";
+         document.getElementById("loadi").style.visibility = "hidden";
+         document.getElementById("loadi").style.visibility = "hidden";
+         // document.getElementById("open").style.visibility = "hidden";
+         document.getElementById("mv-demo").style.visibility = "hidden";
+         var xhr = new XMLHttpRequest();
+         xhr.timeout = 0;
+         xhr.open('POST', '/run3dModelJob', true);
+         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+         xhr.onload = function () {
+           // document.getElementsByClassName('loaderanim')[0].fadeOut();
+           document.getElementById("load").style.visibility = "hidden";
+           var data = JSON.parse(this.responseText);
+           if (data == 'error') {
+             document.getElementById("loadi").style.visibility = "visible";
+             document.getElementById('loadi').innerHTML = 'You have exhausted your current generation cap';
+             return;
+           }
+           if (data == 'incomplete') {
+             document.getElementById("loadi").style.visibility = "visible";
+             document.getElementById('loadi').innerHTML = 'Something went wrong with this job, if the error persists, please contact support';
+             return;
+           }
+           if (data == 'moderation') {
+             document.getElementById("loadi").style.visibility = "visible";
+             document.getElementById('loadi').innerHTML = 'Request cannot be completed because it in violation of ImagineAI\'s rules.';
+             document.getElementById('generations').innerText = parseInt(document.getElementById('generations').innerHTML + 1);
+             return;
+           }
+           // document.getElementById("open").style.visibility = "visible";
+           document.getElementById("mv-demo").src = data;
+           // var open = document.getElementById("open");
+           // open.setAttribute('href', data);
+           document.getElementById("mv-demo").style.visibility = "visible";
+         };
+         xhr.send('prompt1='+textval+"&id="+id);
+     })
+  </script>
 </body>
 
 </html>
