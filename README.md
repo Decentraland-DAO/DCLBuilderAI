@@ -2,7 +2,8 @@
 
 <i> This project is currently WIP, so please bear with us as we work toward completing it, here's the first look:</i>
 
-<img width="1436" alt="Screen Shot 2023-04-29 at 2 06 07 AM" src="https://user-images.githubusercontent.com/56746236/235294601-a808db7a-40ab-4b41-b4ce-2fb41e2a0a25.png">
+![image](https://github.com/DCLBuilderAI/DCLBuilderAI/assets/56746236/00ec8fc5-ecc9-4678-9a7e-02582d72df4d)
+
 
 ## Introduction
 
